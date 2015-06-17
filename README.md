@@ -11,11 +11,16 @@ Don't use sudo or config/schedule.js will be create as root user
 Create or modify config/schedule.js : 
 
     module.exports.schedule = {
-      //Every monday at 1am
-       "0 1 * * 1"   : function ()
-       {
+        //Every monday at 1am
+        "0 1 * * 1": function () {
             console.log("cron ok");
-       }
+        },
+        "jobName": {
+            schedule: {hour: 1, dayOfWeek: 1},
+            task: function () {
+                sails.log('Object literal date!');
+            }
+        }
     };
     
 That's it :) 
